@@ -93,7 +93,7 @@ def atualizar_pedidos_com_status_pendente():
                 time.sleep(intervalo_pausa)
         print(f"⏳ [RECONSULTA] - Resultado da Atualização {atualizados}/{len(pedidos_pendentes)} ...")    
         
-        print(f"⏳ [RECONSULTA] - Aguardando {tempo} minutos para próxima reconsulta...")   
         print("✅ [RECONSULTA] - Reconsulta concluída com sucesso.")
+        print(f"⏳ [RECONSULTA] - Aguardando {tempo} minutos para próxima reconsulta...")   
         time.sleep(intervalo_reconsulta)
         
