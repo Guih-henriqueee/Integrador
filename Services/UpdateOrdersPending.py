@@ -21,7 +21,8 @@ schema_config, table_orders, *_ = get_db_schema_info()
 schema_config = quoted(schema_config)
 
 def atualizar_pedidos_com_status_pendente():
-
+    while True:    
+        print("🔁 [RECONSULTA] - Iniciando rotina de reconsulta de pedidos pendentes...")
         with get_conn() as conn:
             cur = conn.cursor()
             try:
@@ -29,9 +30,9 @@ def atualizar_pedidos_com_status_pendente():
                 cur.execute(query)
                 pedidos_pendentes = cur.fetchall()
             except Exception as e:
-                print(f"❌ [SERVICE] - Erro ao consultar pedidos pendentes: {e}")
+                print(f"❌ [RECONSULTA] - Erro ao consultar pedidos pendentes: {e}")
 
-        print(f"🔍 [SERVICE] - Encontrados {len(pedidos_pendentes)} pedidos pendentes para reconsulta.")
+        print(f"🔍 [RECONSULTA] - Encontrados {len(pedidos_pendentes)} pedidos pendentes para reconsulta.")
         atualizados = 0
         for pedido_id, painel in pedidos_pendentes:
             settings = next((s for s in API_CONFIGS if s["painel"] == painel), None)
@@ -90,5 +91,9 @@ def atualizar_pedidos_com_status_pendente():
             except Exception as e:
                 print(f"❌ [PRECODE {painel}] - Erro na reconsulta do pedido {pedido_id}: {e}")
                 time.sleep(intervalo_pausa)
-        print(f"⏳ [SERVICE] - Resultado da Atualização {atualizados}/{len(pedidos_pendentes)} ...")    
-        print(f"⏳ [SERVICE] - Aguardando {tempo} minutos para próxima reconsulta...\n")    
+        print(f"⏳ [RECONSULTA] - Resultado da Atualização {atualizados}/{len(pedidos_pendentes)} ...")    
+        
+        print(f"⏳ [RECONSULTA] - Aguardando {tempo} minutos para próxima reconsulta...")   
+        print("✅ [RECONSULTA] - Reconsulta concluída com sucesso.")
+        time.sleep(intervalo_reconsulta)
+        
