@@ -1,0 +1,56 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches
+*.cache
+*.pytest_cache/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environment (caso use venv ou similar)
+venv/
+env/
+ENV/
+
+# Editor / OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Python specific files
+*.pyo
+*.pyd
+
+# dotenv environment variables
+.env
+
+# Coverage reports
+.coverage
+htmlcov/
+.coverage.*
+
+# mypy
+.mypy_cache/
+
+# pytype
+.pytype/
+
+# Pyre type checker
+.pyre/
+
+# pytest
+.cache/
+
+# pyright
+pyrightconfig.json
